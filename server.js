@@ -15,6 +15,8 @@ app.set("view engine", "mustache");
 app.set("layout", "layout");
 
 app.use(morgan("dev"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(routes);
 

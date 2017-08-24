@@ -14,7 +14,6 @@ const carsSchema = new Schema({
     require: true},
   engine: [{
     cylinders: {type: Number, required: true},
-    fuel: {type: String, required: true},
     displacement: {
       type: String,
       validate: [ function(val) {
@@ -22,7 +21,8 @@ const carsSchema = new Schema({
         return lastChar === "L";
       }, "Displacement must be in liters (L)."],
       required: true},
-  }]
+  }],
+  color: {type: String, required: true}
 });
 
 // creates the collection//
