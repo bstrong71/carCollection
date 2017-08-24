@@ -2,8 +2,8 @@
   <h1>The Car Collection</h1>
 </header>
 <article>
-  {{^cars}}
-  <a class="content" href="{{id}}"></a>
+  {{#car}}
+  <a class="content" href="{{_id}}"></a>
   <div class="eachCar">
     <h3>{{year}} {{make}} {{model}}</h3>
     <ul>
@@ -14,7 +14,9 @@
     <button type="submit" name="Edit">Edit Car</button>
     <button type="submit" name="Delete">Delete Car</button>
   </div>
-{{/cars}}
+{{/car}}
+{{^car}}
+{{/car}}
 </article>
 <aside>
   <h2>Add a Car</h2>
@@ -24,6 +26,8 @@
     <input type="text" name="model" placeholder="Model">
     <br>
     <input type="number" name="year" placeholder="Year">
+    <br>
+    <input type="text" name="color" placeholder="Color">
     <br>
     <p>Engine Details</p>
     <input type="number" name="cylinders" placeholder="# of Cylinders">

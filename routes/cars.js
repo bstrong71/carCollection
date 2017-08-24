@@ -1,26 +1,38 @@
 const express     = require("express");
-const Cars        = require("../models/cars/cars");
+const Cars        = require("../models/cars");
 const router      = express.Router();
 
+let results = []; //to give access to data in routes
+
+
+function getCars(req, res, next) {
+  Cars.find({})
+    .then(function(data) {
+      results = data;
+      next()
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
+};
 
 
 
-
-router.get("/", function(req, res) {
-
-  res.render("thecars");
-})
+router.get("/", getCars, function(req, res) {
+  res.render("thecars", {car: results});
+});
 
 
-router.get("/create", function(req, res) {
+router.post("/", function(req, res) {
   Cars.create({
-    make: "Chevrolet",
-    model: "Caprice",
-    year: 1977,
-    engine: [{
-        cylinders: 8,
-        displacement: '5.7L'
-      }],
+    make: req.body.make,
+    model: req.body.model,
+    year: req.body.year,
+    engine: [
+      {cylinders: req.body.cylinders},
+      {displacement: req.body.displacement}
+    ],
+    color: req.body.color
   })
   .then(function(data) {
     console.log(data);
@@ -28,13 +40,10 @@ router.get("/create", function(req, res) {
   .catch(function(err) {
     console.log(err);
   })
+  res.redirect("/");
+});
 
-
-  res.render("");
-})
 // Endpoints to use: edit, delete, create, retrieve //
-
-
 
 
 module.exports = router;
