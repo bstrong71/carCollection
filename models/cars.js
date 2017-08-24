@@ -12,7 +12,7 @@ const carsSchema = new Schema({
     min: [1900, "Year must be at least 1900"],
     max: [2018, "Year must be before 2019"],
     require: true},
-  engine: [{
+  engine: {
     cylinders: {type: Number, required: true},
     displacement: {
       type: String,
@@ -21,7 +21,7 @@ const carsSchema = new Schema({
         return lastChar === "L";
       }, "Displacement must be in liters (L)."],
       required: true},
-  }],
+  },
   color: {type: String, required: true}
 });
 

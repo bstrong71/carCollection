@@ -24,14 +24,15 @@ router.get("/", getCars, function(req, res) {
 
 
 router.post("/", function(req, res) {
+  console.log("CYLINDERS: ", req.body.cylinders);
   Cars.create({
     make: req.body.make,
     model: req.body.model,
     year: req.body.year,
-    engine: [
-      {cylinders: req.body.cylinders},
-      {displacement: req.body.displacement}
-    ],
+    engine: {
+      cylinders: req.body.cylinders,
+      displacement: req.body.displacement
+    },
     color: req.body.color
   })
   .then(function(data) {
