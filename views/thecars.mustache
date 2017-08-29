@@ -3,16 +3,16 @@
 </header>
 <article>
   {{#car}}
-  <a class="content" href="{{_id}}"></a>
   <div class="eachCar">
+    <a class="content" href="{{_id}}"></a>
     <h3>{{year}} {{make}} {{model}}</h3>
     <ul>
       <li>Color: {{color}}</li>
       <li>Cylinders: {{cylinders}}</li>
       <li>Displacement: {{displacement}}</li>
     </ul>
-    <button type="submit" name="Edit">Edit Car</button>
-    <button type="submit" name="Delete">Delete Car</button>
+    <p><a href="/edit/{{id}}">Edit Car</a></p>
+    <p><a href="/delete/{{id}}">Delete Car</a></p>
   </div>
 {{/car}}
 {{^car}}
@@ -29,7 +29,6 @@
     <br>
     <input type="text" name="color" placeholder="Color">
     <br>
-    <p>Engine Details</p>
     <input type="number" name="cylinders" placeholder="# of Cylinders">
     <br>
     <input type="text" name="displacement" placeholder="Displacement in Liters">

@@ -1,1 +1,25 @@
-// edit the car info //
+<header>
+  <h1>Edit This Car</h1>
+</header>
+<article>
+  {{#car}}
+    <div class="editCar">
+      <form action="/edit" method="post">
+        <input type="text" name="make" value="{{make}}" placeholder="Make">
+        <br>
+        <input type="text" name="model" value="{{model}}" placeholder="Model">
+        <br>
+        <input type="number" name="year" value="{{year}}" placeholder="Year">
+        <br>
+        <input type="text" name="color" value="{{color}}" placeholder="Color">
+        <br>
+        <input type="number" name="cylinders" value="{{cylinders}}" placeholder="# of Cylinders">
+        <br>
+        <input type="text" name="displacement" value="{{displacement}}" placeholder="Displacement in Liters">
+        <br>
+        <button type="submit" name="id" value="{{id}}">Save Changes</button>
+      </form>
+    </div>
+  {{/car}}
+
+</article>

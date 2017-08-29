@@ -12,17 +12,15 @@ const carsSchema = new Schema({
     min: [1900, "Year must be at least 1900"],
     max: [2018, "Year must be before 2019"],
     require: true},
-  engine: {
-    cylinders: {type: Number, required: true},
-    displacement: {
-      type: String,
-      validate: [ function(val) {
-        const lastChar = val.substr(val.length - 1);
-        return lastChar === "L";
-      }, "Displacement must be in liters (L)."],
-      required: true},
-  },
-  color: {type: String, required: true}
+  color: {type: String, required: true},
+  cylinders: {type: Number, required: true},
+  displacement: {
+    type: String,
+    validate: [ function(val) {
+      const lastChar = val.substr(val.length - 1);
+      return lastChar === "L";
+    }, "Displacement must be in liters (L)."],
+    required: true}
 });
 
 // creates the collection//
